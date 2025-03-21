@@ -2,54 +2,60 @@
     <div class="login-form bx--grid">
         <div class="bx--row">
             <div class="bx--col">
-                <!-- 1. Tiêu đề "Log in" -->
+                <!-- Login title -->
                 <h1 class="login-title">{{ title }}</h1>
 
-                <!-- 2. "Don't have an account? Create an IBMid" -->
+                <!-- Create account section -->
                 <p class="create-account">
                     {{ label1 }}
                     <a href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-19774">{{ labelIBM }}</a>
                 </p>
 
-                <!-- Form đăng nhập -->
-                <form id="loginForm" (ngSubmit)="onSubmit()">
-                    <!-- 3. Trường IBMid -->
+
+                <!-- Login form -->
+                <form id="loginForm" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                    <!-- IBMid input field -->
                     <div class="bx--form-item">
                         <cds-text-label>
                             {{ label2 }}
                             <a href="https://www.ibm.com/account/us-en/forgot-id">{{ label3 }}</a>
-                            <!-- <div class="forgot-id">
-                            </div> -->
                             <input type="text" id="ibmid" cdsText placeholder="username@IBM.com" [theme]="theme"
-                                [(ngModel)]="ibmid" name="ibmid" required />
+                                [(ngModel)]="ibmid" name="ibmid" required email #ibmidInput="ngModel" />
                         </cds-text-label>
+                        <!-- Warning message -->
+                        <div *ngIf="warningMessage" class="warning-text">
+                            {{ warningMessage }}
+                        </div>
                     </div>
 
-
-
-                    <!-- 5. Checkbox "Remember ID" -->
+                    <!-- Remember ID checkbox -->
                     <div class="bx--form-item">
-                        <cds-checkbox label="Remember ID" [disabled]="disabled" [indeterminate]="indeterminate"
-                            [(ngModel)]="checked" name="rememberId" (checkedChange)="onCheckedChange($event)">
-                            {{label4}}</cds-checkbox>
+                        <cds-checkbox [disabled]="disabled" [indeterminate]="indeterminate" [(ngModel)]="checked"
+                            name="rememberId" (checkedChange)="onCheckedChange($event)">
+                            <div class="checkbox-content">
+                                <span class="checkbox-label">{{ label4 }}</span>
+                                <ng-icon name="featherAlertCircle" size="20" class="checkbox-icon"></ng-icon>
+                            </div>
+                        </cds-checkbox>
                     </div>
 
-                    <!-- 6 & 7. Nút "Log in with Softlayer" và "Continue" -->
+                    <!-- Button group -->
                     <div class="button-group">
-                        <a href="https://www.ibm.com/cloud">
-                            <button ibmButton="ghost">
-                                Log in with Softlayer
-                            </button>
+                        <!-- Log in with Softlayer button -->
+                        <a href="htt/www.ibm.com/cloud">
+                            <button ibmButton="ghost">Log in with Softlayer</button>
                         </a>
+
+                        <!-- Continue button -->
                         <button ibmButton="primary" type="submit" [isExpressive]="isExpressive"
                             class="button-with-icon">
                             <span class="button-text">Continue</span>
-                            <ng-icon class="ng-icon" name="featherArrowDown" size="20"></ng-icon>
+                            <ng-icon class="ng-icon" name="featherArrowRight" size="20"></ng-icon>
                         </button>
                     </div>
                 </form>
 
-                <!-- 8. "Need help? Contact the IBM Help desk" -->
+                <!-- Help desk section -->
                 <p class="help-desk">
                     Need help?
                     <a href="https://www.ibm.com/support">Contact the IBM Help Desk</a>

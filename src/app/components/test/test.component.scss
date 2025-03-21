@@ -3,7 +3,7 @@
 @use '@carbon/styles/scss/type' as *;
 @use '@carbon/styles/scss/colors' as *;
 
-// Custom fallback variables (if Carbon variables are missing)
+// Custom fallback variables for spacing, colors, and typography
 $custom-spacing-05: 1rem !default;
 $custom-spacing-07: 2rem !default;
 $custom-ui-01: #ffffff !default;
@@ -11,7 +11,7 @@ $custom-text-01: #000000 !default;
 $custom-text-02: #6f6f6f !default;
 $custom-link-01: #0f62fe !default;
 
-// Main container
+// Styles for the main login container
 .login-container {
   background: linear-gradient(135deg, #003087 0%, #005eb8 100%);
   min-height: 100vh;
@@ -21,7 +21,7 @@ $custom-link-01: #0f62fe !default;
   padding: if(global-variable-exists('spacing-05'), $spacing-05, $custom-spacing-05);
 }
 
-// Login form
+// Styles for the login form
 .login-form {
   background: if(global-variable-exists('ui-01'), $ui-01, $custom-ui-01);
   padding: if(global-variable-exists('spacing-07'), $spacing-07, $custom-spacing-07);
@@ -31,7 +31,7 @@ $custom-link-01: #0f62fe !default;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-// Login title
+// Styles for the login title
 .login-title {
   @if mixin-exists('type-style') {
     @include type-style('heading-05');
@@ -40,7 +40,7 @@ $custom-link-01: #0f62fe !default;
   color: if(global-variable-exists('text-01'), $text-01, $custom-text-01);
 }
 
-// Create account section
+// Styles for the "Create account" section
 .create-account {
   margin-bottom: if(global-variable-exists('spacing-07'), $spacing-07, $custom-spacing-07);
   @if mixin-exists('type-style') {
@@ -58,84 +58,101 @@ $custom-link-01: #0f62fe !default;
   }
 }
 
-// Form item spacing
+// Styles for form item spacing
 .bx--form-item {
-    margin-bottom: if(global-variable-exists('spacing-03'), $spacing-03, $custom-spacing-03);
-    ::ng-deep .cds--label{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;   
+  margin-bottom: if(global-variable-exists('spacing-03'), $spacing-03, $custom-spacing-03);
+
+  ::ng-deep .cds--label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 }
+
+// Styles for checkbox content
+.checkbox-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-  
-  .forgot-id {
-    margin: 0; // Loại bỏ margin vì đã được căn chỉnh bởi flexbox
-  
-    a {
+
+.checkbox-label {
+  margin: 0;
+}
+
+.checkbox-icon {
+  flex-shrink: 0;
+}
+
+// Styles for the "Forgot ID" section
+.forgot-id {
+  margin: 0;
+
+  a {
+    @if mixin-exists('type-style') {
+      @include type-style('body-short-01');
+    }
+    color: if(global-variable-exists('link-01'), $link-01, $custom-link-01);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Styles for the button group
+.button-group {
+  display: flex;
+  gap: if(global-variable-exists('spacing-03'), $spacing-03, $custom-spacing-05);
+  margin: if(global-variable-exists('spacing-05'), $spacing-05, $custom-spacing-05) 0;
+
+  a {
+    text-decoration: none;
+
+    button[ibmButton="ghost"], button[ibmButton="secondary"] {
+      width: 100%;
       @if mixin-exists('type-style') {
         @include type-style('body-short-01');
-      }
-      color: if(global-variable-exists('link-01'), $link-01, $custom-link-01);
-      text-decoration: none;
-  
-      &:hover {
-        text-decoration: underline;
       }
     }
   }
 
-// Button group
-.button-group {
+  button[ibmButton="primary"] {
+    flex: 1;
     display: flex;
-    gap: if(global-variable-exists('spacing-03'), $spacing-03, $custom-spacing-05);
-    margin: if(global-variable-exists('spacing-05'), $spacing-05, $custom-spacing-05) 0;
-  
-    a {
-      text-decoration: none;
-  
-      button[ibmButton="ghost"], button[ibmButton="secondary"] {
-        width: 100%;
-        @if mixin-exists('type-style') {
-          @include type-style('body-short-01');
-        }
-      }
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    @if mixin-exists('type-style') {
+      @include type-style('body-short-01');
     }
-  
-    button[ibmButton="primary"] {
-      flex: 1;
-      display: flex; /* Enables flexbox for the button */
-      justify-content: space-between; /* Aligns text and icon at opposite ends */
-      align-items: center; /* Vertically centers the content */
-      padding: 0.5rem 1rem; /* Adjust padding as needed */
-      @if mixin-exists('type-style') {
-        @include type-style('body-short-01');
-      }
-    }
-  
-    .button-with-icon {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%; /* Ensures the button takes full width */
-    }
-  
-    .button-text {
-      margin: 0; /* Removes any default margin */
-    }
-  
-    .ng-icon {
-      flex-shrink: 0; /* Prevents the icon from shrinking */
-    }
+  }
 
-  // Responsive layout for small screens (width < 445px)
+  .button-with-icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .button-text {
+    margin: 0;
+  }
+
+  .ng-icon {
+    flex-shrink: 0;
+  }
+
+  // Responsive styles for small screens
   @media screen and (max-width: 445px) {
     flex-direction: column;
     width: 100%;
-    
+
     a {
       width: 100%;
     }
-    
+
     button[ibmButton="primary"],
     button[ibmButton="ghost"] {
       width: 100%;
@@ -143,7 +160,7 @@ $custom-link-01: #0f62fe !default;
   }
 }
 
-// Help desk section
+// Styles for the "Help desk" section
 .help-desk {
   margin-top: if(global-variable-exists('spacing-07'), $spacing-07, $custom-spacing-07);
   @if mixin-exists('type-style') {
@@ -159,4 +176,12 @@ $custom-link-01: #0f62fe !default;
       text-decoration: underline;
     }
   }
+}
+
+// Styles for the warning text
+.warning-text {
+  color: red;
+  font-weight: bold;
+  margin: 1rem;
+  display: block; /* Ensure it is visible */
 }
