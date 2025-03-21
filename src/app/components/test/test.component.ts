@@ -8,6 +8,7 @@ import { SharedModule } from '../../shared/shared.module';
     styleUrl: './test.component.scss'
 })
 export class TestComponent {
+
     // Add this property to resolve the error
 
     onSubmit() {
@@ -15,16 +16,17 @@ export class TestComponent {
     }
     onCheckedChange($event: boolean) {
         if ($event === true) {
-            console.log('checked');
+            alert('You choose to remember your ID !!');
         }
         else {
-            console.log('unchecked');
+            alert('You choose not to remember your ID !!');
         }
     }
     title = `Log In`;
     label1 = `Don't have a password?`;
     label2 = `IBMid`;
     label3 = `Forgot ID?`;
+    label4 = `Remember ID`
     labelIBM = `Log in with IBMid`;
     theme: 'light' | 'dark' = "light";
     ibmid = '';

@@ -16,29 +16,29 @@
                     <!-- 3. Trường IBMid -->
                     <div class="bx--form-item">
                         <cds-text-label>
-                            <label for="ibmid" class="bx--label">{{ label2 }}</label>
+                            {{ label2 }}
+                            <a href="https://www.ibm.com/account/us-en/forgot-id">{{ label3 }}</a>
+                            <!-- <div class="forgot-id">
+                            </div> -->
                             <input type="text" id="ibmid" cdsText placeholder="username@IBM.com" [theme]="theme"
                                 [(ngModel)]="ibmid" name="ibmid" required />
                         </cds-text-label>
                     </div>
 
-                    <!-- 4. Link "Forgot ID?" -->
-                    <div class="forgot-id">
-                        <a href="https://www.ibm.com/account/us-en/forgot-id">{{ label3 }}</a>
-                    </div>
+
 
                     <!-- 5. Checkbox "Remember ID" -->
                     <div class="bx--form-item">
                         <cds-checkbox label="Remember ID" [disabled]="disabled" [indeterminate]="indeterminate"
-                            [(ngModel)]="checked" name="rememberId" (checkedChange)="onCheckedChange($event)"> Remember
-                            ID</cds-checkbox>
+                            [(ngModel)]="checked" name="rememberId" (checkedChange)="onCheckedChange($event)">
+                            {{label4}}</cds-checkbox>
 
                     </div>
 
                     <!-- 6 & 7. Nút "Log in with Softlayer" và "Continue" -->
                     <div class="button-group">
                         <a href="https://www.ibm.com/cloud">
-                            <button ibmButton="secondary">
+                            <button ibmButton="ghost">
                                 Log in with Softlayer
                             </button>
                         </a>

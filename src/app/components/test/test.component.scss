@@ -3,80 +3,145 @@
 @use '@carbon/styles/scss/type' as *;
 @use '@carbon/styles/scss/colors' as *;
 
+// Custom fallback variables (if Carbon variables are missing)
+$custom-spacing-05: 1rem !default;
+$custom-spacing-07: 2rem !default;
+$custom-ui-01: #ffffff !default;
+$custom-text-01: #000000 !default;
+$custom-text-02: #6f6f6f !default;
+$custom-link-01: #0f62fe !default;
+
+// Main container
 .login-container {
-  background: linear-gradient(135deg, #003087 0%, #005eb8 100%); // 9. Gradient nền xanh
+  background: linear-gradient(135deg, #003087 0%, #005eb8 100%);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: $spacing-05;
+  padding: if(global-variable-exists('spacing-05'), $spacing-05, $custom-spacing-05);
 }
 
+// Login form
 .login-form {
-  background: $ui-01; // Màu nền trắng của CDS
-  padding: $spacing-07;
+  background: if(global-variable-exists('ui-01'), $ui-01, $custom-ui-01);
+  padding: if(global-variable-exists('spacing-07'), $spacing-07, $custom-spacing-07);
   border-radius: 4px;
   max-width: 400px;
   width: 100%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+// Login title
 .login-title {
-  @include type-style('heading-05'); // 1. Tiêu đề
-  margin-bottom: $spacing-05;
-  color: $text-01;
+  @if mixin-exists('type-style') {
+    @include type-style('heading-05');
+  }
+  margin-bottom: if(global-variable-exists('spacing-05'), $spacing-05, $custom-spacing-05);
+  color: if(global-variable-exists('text-01'), $text-01, $custom-text-01);
 }
 
+// Create account section
 .create-account {
-  margin-bottom: $spacing-07; // 2. Khoảng cách
-  @include type-style('body-short-01');
-  color: $text-02;
-
-  a {
-    color: $link-01;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-.forgot-id {
-  margin: $spacing-03 0 $spacing-05 0; // 4. Khoảng cách
-  text-align: right;
-
-  a {
+  margin-bottom: if(global-variable-exists('spacing-07'), $spacing-07, $custom-spacing-07);
+  @if mixin-exists('type-style') {
     @include type-style('body-short-01');
-    color: $link-01;
+  }
+  color: if(global-variable-exists('text-02'), $text-02, $custom-text-02);
+
+  a {
+    color: if(global-variable-exists('link-01'), $link-01, $custom-link-01);
     text-decoration: none;
+
     &:hover {
       text-decoration: underline;
     }
   }
 }
 
+// Form item spacing
+.bx--form-item {
+    margin-bottom: if(global-variable-exists('spacing-03'), $spacing-03, $custom-spacing-03);
+    ::ng-deep .cds--label{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;   
+}
+}
+  
+  .forgot-id {
+    margin: 0; // Loại bỏ margin vì đã được căn chỉnh bởi flexbox
+  
+    a {
+      @if mixin-exists('type-style') {
+        @include type-style('body-short-01');
+      }
+      color: if(global-variable-exists('link-01'), $link-01, $custom-link-01);
+      text-decoration: none;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+// Button group
 .button-group {
   display: flex;
-  gap: $spacing-03; // 6 & 7. Khoảng cách giữa các nút
-  margin: $spacing-05 0;
+  gap: if(global-variable-exists('spacing-03'), $spacing-03, $custom-spacing-05);
+  margin: if(global-variable-exists('spacing-05'), $spacing-05, $custom-spacing-05) 0;
 
-  button[ibmButton="secondary"] {
-    flex: 1;
+  a {
+    text-decoration: none;
+    
+    button[ibmButton="ghost"], button[ibmButton="secondary"] {
+      width: 100%;
+      @if mixin-exists('type-style') {
+        @include type-style('body-short-01');
+      }
+    }
   }
 
   button[ibmButton="primary"] {
     flex: 1;
+    @if mixin-exists('type-style') {
+      @include type-style('body-short-01');
+    }
+  }
+    button[ibmButton="ghost"] {
+        flex: 1;
+        @if mixin-exists('type-style') {
+        @include type-style('body-short-01');
+        }
+    }
+  
+  // Responsive layout for small screens (width < 445px)
+  @media screen and (max-width: 445px) {
+    flex-direction: column;
+    width: 100%;
+    
+    a {
+      width: 100%;
+    }
+    
+    button[ibmButton="primary"],
+    button[ibmButton="ghost"] {
+      width: 100%;
+    }
   }
 }
 
+// Help desk section
 .help-desk {
-  margin-top: $spacing-07; // 8. Khoảng cách
-  @include type-style('body-short-01');
-  color: $text-02;
+  margin-top: if(global-variable-exists('spacing-07'), $spacing-07, $custom-spacing-07);
+  @if mixin-exists('type-style') {
+    @include type-style('body-short-01');
+  }
+  color: if(global-variable-exists('text-02'), $text-02, $custom-text-02);
 
   a {
-    color: $link-01;
+    color: if(global-variable-exists('link-01'), $link-01, $custom-link-01);
     text-decoration: none;
+
     &:hover {
       text-decoration: underline;
     }
