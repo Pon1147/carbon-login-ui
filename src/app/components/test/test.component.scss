@@ -86,34 +86,47 @@ $custom-link-01: #0f62fe !default;
 
 // Button group
 .button-group {
-  display: flex;
-  gap: if(global-variable-exists('spacing-03'), $spacing-03, $custom-spacing-05);
-  margin: if(global-variable-exists('spacing-05'), $spacing-05, $custom-spacing-05) 0;
-
-  a {
-    text-decoration: none;
-    
-    button[ibmButton="ghost"], button[ibmButton="secondary"] {
-      width: 100%;
+    display: flex;
+    gap: if(global-variable-exists('spacing-03'), $spacing-03, $custom-spacing-05);
+    margin: if(global-variable-exists('spacing-05'), $spacing-05, $custom-spacing-05) 0;
+  
+    a {
+      text-decoration: none;
+  
+      button[ibmButton="ghost"], button[ibmButton="secondary"] {
+        width: 100%;
+        @if mixin-exists('type-style') {
+          @include type-style('body-short-01');
+        }
+      }
+    }
+  
+    button[ibmButton="primary"] {
+      flex: 1;
+      display: flex; /* Enables flexbox for the button */
+      justify-content: space-between; /* Aligns text and icon at opposite ends */
+      align-items: center; /* Vertically centers the content */
+      padding: 0.5rem 1rem; /* Adjust padding as needed */
       @if mixin-exists('type-style') {
         @include type-style('body-short-01');
       }
     }
-  }
-
-  button[ibmButton="primary"] {
-    flex: 1;
-    @if mixin-exists('type-style') {
-      @include type-style('body-short-01');
-    }
-  }
-    button[ibmButton="ghost"] {
-        flex: 1;
-        @if mixin-exists('type-style') {
-        @include type-style('body-short-01');
-        }
+  
+    .button-with-icon {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%; /* Ensures the button takes full width */
     }
   
+    .button-text {
+      margin: 0; /* Removes any default margin */
+    }
+  
+    .ng-icon {
+      flex-shrink: 0; /* Prevents the icon from shrinking */
+    }
+
   // Responsive layout for small screens (width < 445px)
   @media screen and (max-width: 445px) {
     flex-direction: column;

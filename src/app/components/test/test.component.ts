@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { featherAirplay, featherArrowDown } from '@ng-icons/feather-icons';
+import { heroUsers } from '@ng-icons/heroicons/outline';
 @Component({
     selector: 'app-test',
     standalone: true,
-    imports: [SharedModule],
+    imports: [SharedModule, NgIcon,],
+    viewProviders: [provideIcons({ featherAirplay, heroUsers, featherArrowDown })],
     templateUrl: './test.component.html',
     styleUrl: './test.component.scss'
 })
@@ -26,7 +30,7 @@ export class TestComponent {
     label1 = `Don't have a password?`;
     label2 = `IBMid`;
     label3 = `Forgot ID?`;
-    label4 = `Remember ID`
+    label4 = `Remember ID`;
     labelIBM = `Log in with IBMid`;
     theme: 'light' | 'dark' = "light";
     ibmid = '';

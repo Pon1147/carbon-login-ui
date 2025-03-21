@@ -32,7 +32,6 @@
                         <cds-checkbox label="Remember ID" [disabled]="disabled" [indeterminate]="indeterminate"
                             [(ngModel)]="checked" name="rememberId" (checkedChange)="onCheckedChange($event)">
                             {{label4}}</cds-checkbox>
-
                     </div>
 
                     <!-- 6 & 7. Nút "Log in with Softlayer" và "Continue" -->
@@ -42,8 +41,10 @@
                                 Log in with Softlayer
                             </button>
                         </a>
-                        <button ibmButton="primary" type="submit" [isExpressive]="isExpressive">
-                            Continue
+                        <button ibmButton="primary" type="submit" [isExpressive]="isExpressive"
+                            class="button-with-icon">
+                            <span class="button-text">Continue</span>
+                            <ng-icon class="ng-icon" name="featherArrowDown" size="20"></ng-icon>
                         </button>
                     </div>
                 </form>
