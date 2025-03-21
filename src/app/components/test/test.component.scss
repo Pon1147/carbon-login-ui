@@ -1,0 +1,84 @@
+@use '@carbon/styles/scss/grid' as *;
+@use '@carbon/styles/scss/spacing' as *;
+@use '@carbon/styles/scss/type' as *;
+@use '@carbon/styles/scss/colors' as *;
+
+.login-container {
+  background: linear-gradient(135deg, #003087 0%, #005eb8 100%); // 9. Gradient nền xanh
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-05;
+}
+
+.login-form {
+  background: $ui-01; // Màu nền trắng của CDS
+  padding: $spacing-07;
+  border-radius: 4px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-title {
+  @include type-style('heading-05'); // 1. Tiêu đề
+  margin-bottom: $spacing-05;
+  color: $text-01;
+}
+
+.create-account {
+  margin-bottom: $spacing-07; // 2. Khoảng cách
+  @include type-style('body-short-01');
+  color: $text-02;
+
+  a {
+    color: $link-01;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.forgot-id {
+  margin: $spacing-03 0 $spacing-05 0; // 4. Khoảng cách
+  text-align: right;
+
+  a {
+    @include type-style('body-short-01');
+    color: $link-01;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.button-group {
+  display: flex;
+  gap: $spacing-03; // 6 & 7. Khoảng cách giữa các nút
+  margin: $spacing-05 0;
+
+  button[ibmButton="secondary"] {
+    flex: 1;
+  }
+
+  button[ibmButton="primary"] {
+    flex: 1;
+  }
+}
+
+.help-desk {
+  margin-top: $spacing-07; // 8. Khoảng cách
+  @include type-style('body-short-01');
+  color: $text-02;
+
+  a {
+    color: $link-01;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
