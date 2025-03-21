@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SHARED_MODULES } from '../../../../carbon-login-ui/src/app/shared/lib.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
     standalone: true,
     templateUrl: './test-btn.component.html',
     styleUrls: ['./test-btn.component.scss'],
     selector: 'app-test-btn',
-    imports: [CommonModule, SHARED_MODULES],
+    imports: [CommonModule, SharedModule],
 })
 export class TestBtnComponent {
     isExpressive = false; // Example default value

@@ -1,42 +1,43 @@
 <div class="login-container">
-  <div class="login-form bx--grid">
-    <div class="bx--row">
-      <div class="bx--col">
-        <h1 class="login-title">{{title}}</h1>
-        <p class="create-account">
-          {{label1}} <a href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-19774">{{labelIBM}}</a>
-        </p>
-        <form id="loginForm">
-          <div class="bx--form-item">
-            <label for="ibmid" class="bx--label">
-              {{label2}}
-            </label>
-            <cds-text-label>
-              <input type="text" id="ibmid" cdsText placeholder="username@IBM.com" [theme]="theme" />
-            </cds-text-label>
-          </div>
-          <div class="forgot-id">
-            <a href="https://www.ibm.com/account/us-en/forgot-id">{{label3}}</a>
-          </div>
-          <div class="bx--form-item">
-            <fieldset class="cds--fieldset">
-              <cds-checkbox [disabled]="disabled" [indeterminate]="indeterminate" [checked]="checked"
-                (checkedChange)="onChange($event)">
-                Remember ID
-              </cds-checkbox>
-            </fieldset>
-          </div>
-          <div class="softlayer-link">
-            <button cdsButton="secondary" [isExpressive]="isExpressive" href="https://www.ibm.com/cloud">Log in with
-              Softlayer</button>
-            <button cdsButton [isExpressive]="isExpressive">Continue</button>
-          </div>
+    <div class="login-form bx--grid">
+        <div class="bx--row">
+            <div class="bx--col">
+                <h1 class="login-title">{{title}}</h1>
+                <p class="create-account">
+                    {{label1}} <a href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-19774">{{labelIBM}}</a>
+                </p>
+                <form id="loginForm">
+                    <div class="bx--form-item">
+                        <label for="ibmid" class="bx--label">
+                            {{label2}}
+                        </label>
+                        <cds-text-label>
+                            <input type="text" id="ibmid" cdsText placeholder="username@IBM.com" [theme]="theme" />
+                        </cds-text-label>
+                    </div>
+                    <div class="forgot-id">
+                        <a href="https://www.ibm.com/account/us-en/forgot-id">{{label3}}</a>
+                    </div>
+                    <div class="bx--form-item">
+                        <fieldset class="cds--fieldset">
+                            <cds-checkbox [disabled]="disabled" [indeterminate]="indeterminate" [checked]="checked"
+                                (checkedChange)="onChange($event)">
+                                Remember ID
+                            </cds-checkbox>
+                        </fieldset>
+                    </div>
+                    <div class="softlayer-link">
+                        <button cdsButton="secondary" [isExpressive]="isExpressive" href="https://www.ibm.com/cloud">Log
+                            in with
+                            Softlayer</button>
+                        <button cdsButton [isExpressive]="isExpressive">Continue</button>
+                    </div>
 
-        </form>
-        <p class="help-desk">
-          Need help? <a href="https://www.ibm.com/support">Contact the IBM Help desk</a>
-        </p>
-      </div>
+                </form>
+                <p class="help-desk">
+                    Need help? <a href="https://www.ibm.com/support">Contact the IBM Help desk</a>
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
